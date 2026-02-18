@@ -20,6 +20,7 @@
     bemoji
     
     btop
+    bluetui
 
     wlr-which-key
     
@@ -28,17 +29,12 @@
     wbg # wall paper 
 
     # Dev tools
-    gcc
-    go
     python3
     nodejs
 
     # Desktop / UI
     vesktop
     firefox
-    brightnessctl
-    playerctl
-    wireplumber
 
     # Fonts
     nerd-fonts.jetbrains-mono

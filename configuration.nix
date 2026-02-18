@@ -105,7 +105,8 @@
     git
     zip
     unzip
-    bluetui
+    brightnessctl
+    playerctl
   ];
 
   environment.pathsToLink = [ "/share" ];
