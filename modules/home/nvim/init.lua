@@ -1,0 +1,12 @@
+require("core.options")
+require("core.keymaps")
+require("core.autocmds")
+require("core.commands")
+
+require("plugins.completion")
+require("plugins.lsp")
+require("plugins.treesitter")
+require("plugins.telescope")
+require("plugins.ui")
+require("plugins.git")
+require("plugins.editor")
