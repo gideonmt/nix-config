@@ -76,7 +76,7 @@
   hardware.asahi = {
     enable = true;
     setupAsahiSound = true;
-    peripheralFirmwareDirectory = ./firmware;
+    peripheralFirmwareDirectory = /etc/nixos/firmware;
   };
 
   # PipeWire audio stack

@@ -25,6 +25,8 @@
     
     wl-screenrec
 
+    wbg # wall paper 
+
     # Dev tools
     gcc
     go

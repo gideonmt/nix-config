@@ -123,6 +123,7 @@ in
         }
     }
 
+    spawn-at-startup "wbg" "${config.home.homeDirectory}/wallpaper.png"
     spawn-at-startup "waybar"
     spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
     spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
