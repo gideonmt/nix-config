@@ -18,7 +18,8 @@
     cliphist
     wl-clipboard
     bemoji
-    
+    tree
+
     btop
     bluetui
 

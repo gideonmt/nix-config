@@ -6,6 +6,7 @@
     ./modules/home/editor.nix     # neovim
     ./modules/home/files.nix      # lf + preview scripts
     ./modules/home/desktop.nix    # niri + waybar + fuzzel
+    ./modules/home/music.nix      # ncspot + sptlrx
     ./modules/home/git.nix
     ./modules/home/packages.nix
   ];

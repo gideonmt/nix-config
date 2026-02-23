@@ -117,7 +117,7 @@ in
       la    = "ls -lah --color=auto";
       ".."  = "cd ..";
       "..." = "cd ../..";
-      update = "sudo nixos-rebuild switch --flake /etc/nixos#macbook-nixos";
+      update = "sudo nixos-rebuild switch --flake /etc/nixos#macbook-nixos --impure";
       edit   = "sudo -e";
       v      = "nvim";
     };
