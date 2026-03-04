@@ -16,6 +16,8 @@
 
   networking.hostName = "macbook-nixos";
 
+  home-manager.backupFileExtension = "backup";
+
   networking.wireless.iwd = {
     enable = true;
     settings.General.EnableNetworkConfiguration = true;

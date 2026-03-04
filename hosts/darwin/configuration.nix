@@ -6,6 +6,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
+  
+  home-manager.backupFileExtension = "backup";
 
   environment.systemPackages = with pkgs; [
     neovim

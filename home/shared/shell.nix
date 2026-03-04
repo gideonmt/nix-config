@@ -23,6 +23,15 @@
     ];
 
     initContent = ''
+      update() {
+        if [[ "$(uname)" == "Darwin" ]]; then
+          darwin-rebuild switch --flake /etc/nixos#$(scutil --get LocalHostName) --impure
+        else
+          sudo nixos-rebuild switch --flake /etc/nixos#$(hostname) --impure
+        fi
+      }
+
+
       lf() {
         export LF_CD_FILE="/var/tmp/.lfcd-$$"
         command lf "$@"
@@ -43,8 +52,6 @@
       la    = "ls -lah --color=auto";
       ".."  = "cd ..";
       "..." = "cd ../..";
-      update = "sudo nixos-rebuild switch --flake /etc/nixos#macbook-nixos --impure";
-      edit   = "sudo -e";
       v      = "nvim";
     };
 
