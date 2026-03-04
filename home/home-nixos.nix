@@ -10,7 +10,7 @@
     ./shared/music.nix
     ./shared/cli.nix
     ./shared/browser.nix
-    ./shared/discord.nix
+    ./linux/discord.nix
     ./linux/desktop.nix
     ./linux/wayland.nix
     ./linux/media.nix

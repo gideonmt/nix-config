@@ -2,7 +2,7 @@
 
 {
   networking.hostName = "gideon-mac";
-
+  system.primaryUser = "gideonmarcus-trask";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
@@ -23,7 +23,16 @@
   ];
 
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+
+  services.yabai = {
+    enable = true;
+    package = pkgs.yabai;
+  };
+
+  services.skhd = {
+    enable = true;
+    package = pkgs.skhd;
+  };
 
   system.stateVersion = 6;
 }

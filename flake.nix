@@ -47,8 +47,10 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.gideon = import ./home/home-darwin.nix;
-          home-manager.backupFileExtension = "backup";
+          home-manager.users.gideonmarcus-trask = import ./home/home-darwin.nix;
+          home-manager.extraSpecialArgs = {
+            homeDirectory = "/Users/gideon";
+          };
         }
       ];
     };

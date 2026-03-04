@@ -136,7 +136,11 @@
       x="$4"
       y="$5"
 
-      TEMPDIR="''${XDG_CACHE_HOME:-$HOME/.cache}/lf"
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        TEMPDIR="''${HOME}/Library/Caches/lf"
+      else
+        TEMPDIR="''${XDG_CACHE_HOME:-$HOME/.cache}/lf"
+      fi
       mkdir -p "$TEMPDIR"
 
       preview() {
@@ -154,6 +158,8 @@
 
       if command -v md5sum >/dev/null 2>&1; then
         thumbnail="$TEMPDIR/$(echo "$file" | md5sum | cut -d' ' -f1).png"
+      elif command -v md5 >/dev/null 2>&1; then
+        thumbnail="$TEMPDIR/$(echo "$file" | md5 -q).png"
       else
         thumbnail="$TEMPDIR/thumbnail.png"
       fi
@@ -186,18 +192,36 @@
 
         jpg|jpeg|png|webp|gif|bmp|tiff|tif|ico) preview "$file" ;;
 
+        ttf|otf|woff|woff2)
+          if command -v fontpreview >/dev/null 2>&1; then
+            fontpreview -i "$file" -o "$thumbnail" 2>/dev/null && preview "$thumbnail"
+          else
+            file "$file"
+          fi ;;
+
         svg)
-          if command -v rsvg-convert >/dev/null 2>&1; then
+          if command -v convert >/dev/null 2>&1; then
+            convert -background none -density 150 "$file" "$thumbnail" 2>/dev/null && preview "$thumbnail"
+          elif command -v rsvg-convert >/dev/null 2>&1; then
             rsvg-convert -w 1920 "$file" -o "$thumbnail" 2>/dev/null && preview "$thumbnail"
           else
             head -n 50 "$file"
           fi ;;
 
         mp3|flac|m4a|aac|ogg|opus|wav|wma)
-          command -v mediainfo >/dev/null 2>&1 && mediainfo "$file" || file "$file" ;;
+          if command -v mediainfo >/dev/null 2>&1; then
+            mediainfo "$file"
+          elif command -v ffprobe >/dev/null 2>&1; then
+            ffprobe -hide_banner "$file" 2>&1
+          else
+            file "$file"
+          fi ;;
 
         docx|doc|odt)
           command -v pandoc >/dev/null 2>&1 && pandoc "$file" -t plain 2>/dev/null | head -n 200 || file "$file" ;;
+
+        xlsx|xls|ods)
+          command -v in2csv >/dev/null 2>&1 && in2csv "$file" 2>/dev/null | head -n 100 || file "$file" ;;
 
         md|markdown)
           if command -v glow >/dev/null 2>&1; then
@@ -219,7 +243,11 @@
 
         *)
           if [[ -d "$file" ]]; then
-            ls -lAh --color=always "$file" 2>/dev/null
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+              ls -lAh "$file" 2>/dev/null
+            else
+              ls -lAh --color=always "$file" 2>/dev/null
+            fi
           elif command -v bat >/dev/null 2>&1; then
             bat --style numbers --color=always --theme=base16 "$file" 2>/dev/null
           else
@@ -235,7 +263,11 @@
     text = ''
       #!/usr/bin/env bash
       kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
-      TEMPDIR="''${XDG_CACHE_HOME:-$HOME/.cache}/lf"
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        TEMPDIR="''${HOME}/Library/Caches/lf"
+      else
+        TEMPDIR="''${XDG_CACHE_HOME:-$HOME/.cache}/lf"
+      fi
       rm -f "$TEMPDIR"/*.png
     '';
   };

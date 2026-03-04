@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -10,11 +10,12 @@
     ./shared/music.nix
     ./shared/cli.nix
     ./shared/browser.nix
-    ./shared/discord.nix
+    ./darwin/wm.nix
+    ./darwin/cli.nix
   ];
 
-  home.username      = "gideon";
-  home.homeDirectory = "/Users/gideon";
+  home.username      = "gideonmarcus-trask";
+  home.homeDirectory = lib.mkForce "/Users/gideonmarcus-trask";
   home.stateVersion  = "25.11";
 
   programs.home-manager.enable = true;

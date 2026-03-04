@@ -13,6 +13,13 @@
     pandoc
     tree
     btop
+    imagemagick
+    typst
+    pastel
+    watch
+    yq
+    timewarrior
+    ffmpeg
     (python3.withPackages (ps: [
       ps.tkinter
       ps.numpy
