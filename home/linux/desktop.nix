@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  c = import ./colors.nix;
+  c = import ../colors.nix;
 
   wkBase = {
     font = "JetBrainsMono Nerd Font 12";
@@ -84,10 +84,40 @@ in
             xkb { }
         }
         touchpad {
-            tap
+            // off
+            // tap
+            // dwt
+            // dwtp
+            // drag false
+            // drag-lock
             natural-scroll
+            // accel-speed 0.2
+            // accel-profile "flat"
+            // scroll-factor 1.0
+            // scroll-factor vertical=1.0 horizontal=-2.0
+            // scroll-method "two-finger"
+            // scroll-button 273
+            // scroll-button-lock
+            // tap-button-map "left-middle-right"
+            // click-method "clickfinger"
+            // left-handed
+            disabled-on-external-mouse
+            // middle-emulation
         }
-        mouse { }
+
+        mouse {
+            // off
+            natural-scroll
+            // accel-speed 0.2
+            // accel-profile "flat"
+            // scroll-factor 1.0
+            // scroll-factor vertical=1.0 horizontal=-2.0
+            // scroll-method "no-scroll"
+            // scroll-button 273
+            // scroll-button-lock
+            // left-handed
+            // middle-emulation
+        }
     }
 
     layout {
@@ -303,7 +333,6 @@ in
           "battery"
           "network"
           "clock"
-          "tray"
         ];
 
         "niri/workspaces" = {
@@ -351,10 +380,6 @@ in
           tooltip-format-wifi = "{essid} ({signalStrength}%) ";
           tooltip-format-ethernet = "{ifname} ";
 	  tooltip-format-disconnected = "Disconnected";
-        };
-
-        tray = {
-          spacing = 6;
         };
       };
     };
@@ -419,8 +444,7 @@ in
       #backlight,
       #battery,
       #network,
-      #clock,
-      #tray {
+      #clock {
         padding: 0 8px;
         color: ${c.fg};
       }

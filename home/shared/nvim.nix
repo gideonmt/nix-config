@@ -72,7 +72,7 @@
 
   # Link nvim lua config into ~/.config/nvim
   xdg.configFile."nvim" = {
-    source    = ./nvim;
+    source    = ../nvim;
     recursive = true;
   };
 }
