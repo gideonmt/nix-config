@@ -240,5 +240,5 @@
     '';
   };
 
-  home.file.".config/lf/icons".source = ./lf-icons;
+  home.file.".config/lf/icons".source = ./assets/lf-icons;
 }
