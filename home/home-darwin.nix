@@ -10,6 +10,7 @@
     ./shared/music.nix
     ./shared/cli.nix
     ./shared/browser.nix
+    ./shared/pdf.nix
     ./darwin/wm.nix
     ./darwin/cli.nix
   ];

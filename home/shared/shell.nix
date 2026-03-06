@@ -25,7 +25,7 @@
     initContent = ''
       update() {
         if [[ "$(uname)" == "Darwin" ]]; then
-          darwin-rebuild switch --flake /etc/nixos#$(scutil --get LocalHostName) --impure
+          sudo darwin-rebuild switch --flake /etc/nixos#$(scutil --get LocalHostName) --impure
         else
           sudo nixos-rebuild switch --flake /etc/nixos#$(hostname) --impure
         fi

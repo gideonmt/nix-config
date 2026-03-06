@@ -13,12 +13,8 @@ require("mason-lspconfig").setup({
    ensure_installed = {
       "lua_ls",
       "html",
-      "cssls",
-      "ts_ls",
-      "eslint",
       "pyright",
-      "gopls",
-      "texlab",
+      "tinymist",
    },
    automatic_installation = true,
 })
